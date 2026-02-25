@@ -1,6 +1,8 @@
 # 🧠🔥 AI Debate Partner
 
 # Developer - Krish Khare
+# Github - <a href="https://github.com/krishkhare049" target="_blank">Github profile</a>
+# LinkedIn - <a href="https://www.linkedin.com/in/krishkhare/" target="_blank">LinkedIn profile</a>
 
 AI Debate Partner is an intelligent web application that allows users to engage in real-time debates with an AI opponent. The platform simulates structured argumentative conversations, evaluates performance, and provides feedback on logic, persuasion, and clarity — helping users improve critical thinking and communication skills.
 
