@@ -35,6 +35,8 @@ export default function DebateChatPage() {
   const [showEndDialog, setShowEndDialog] = useState(false);
   const [makePublic, setMakePublic] = useState(true);
 
+  const [isCompleted, setIsCompleted] = useState(false);
+
   const bottomRef = useRef<HTMLDivElement>(null);
 
   // ================= FETCH DEBATE =================
@@ -44,18 +46,44 @@ export default function DebateChatPage() {
     fetchDebate();
   }, [debateId]);
 
-  const fetchDebate = async () => {
-    try {
-      setLoading(true);
+  // const fetchDebate = async () => {
+  //   try {
+  //     setLoading(true);
 
-      const res = await api.get(`/debate/${debateId}`);
-      setMessages(res.data.messages || []);
-    } catch (err) {
-      toast.error("Failed to load debate");
-    } finally {
-      setLoading(false);
+  //     const res = await api.get(`/debate/${debateId}`);
+  //     setMessages(res.data.messages || []);
+  //   } catch (err) {
+  //     toast.error("Failed to load debate");
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
+  const fetchDebate = async () => {
+  try {
+    setLoading(true);
+
+    const res = await api.get(`/debate/${debateId}`);
+
+    const debateData = res.data;
+
+    console.log("Fetched debate data:", debateData.debate.status);
+
+    // ✅ if completed → redirect to result
+    if (debateData.debate.status === "completed") {
+      // router.replace(`/result/${debateId}`);
+      // return;
+      setIsCompleted(true);
     }
-  };
+
+    setMessages(debateData.messages || []);
+
+  } catch (err) {
+    toast.error("Failed to load debate");
+  } finally {
+    setLoading(false);
+  }
+};
 
   // ================= AUTO SCROLL =================
 
@@ -97,9 +125,25 @@ export default function DebateChatPage() {
         ...prev,
         res.data.aiMessage,
       ]);
-    } catch (err) {
-      toast.error("Error sending message");
-    } finally {
+    // } catch (err) {
+    //   toast.error("Error sending message");
+    // } 
+    }
+    catch (err: any) {
+  const message =
+    err?.response?.data?.message || "Error sending message";
+
+  // ✅ debate already completed
+  if (message.toLowerCase().includes("completed")) {
+    toast.error("Debate already completed");
+
+    router.replace(`/result/${debateId}`);
+    return;
+  }
+
+  toast.error(message);
+}
+    finally {
       setSending(false);
       setAiTyping(false);
     }
@@ -151,13 +195,29 @@ export default function DebateChatPage() {
               </p>
             </div>
 
+            {
+              !isCompleted ? (
+
             <button
+            disabled={isCompleted}
               onClick={() => setShowEndDialog(true)}
-              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-red-500 text-white hover:scale-105 transition"
+              className="flex items-center gap-2 px-4 py-2 rounded-lg text-white transition bg-red-500 hover:scale-105"
             >
               <Flag size={16} />
               End Debate
             </button>
+              ):(
+                  <button
+            disabled={!isCompleted}
+              onClick={() => {router.push(`/result/${debateId}`)}}
+              className="flex items-center gap-2 px-4 py-2 rounded-lg text-black transition bg-blue-300 hover:scale-105"
+            >
+              <Flag size={16} />
+              View Result
+            </button>
+              )
+            }
+            
           </div>
         </div>
 
@@ -184,7 +244,7 @@ export default function DebateChatPage() {
         <div className="flex-shrink-0 border-t bg-white p-4">
           <div className="max-w-3xl mx-auto flex gap-3 items-center">
 
-            <input
+            {/* <input
               className="flex-1 border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-black"
               value={input}
               disabled={sending}
@@ -193,12 +253,30 @@ export default function DebateChatPage() {
               onKeyDown={(e) => {
                 if (e.key === "Enter") sendMessage();
               }}
-            />
+            /> */}
+
+            <input
+  className="flex-1 border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-black"
+  value={input}
+  disabled={sending || isCompleted}
+  onChange={(e) => setInput(e.target.value)}
+  placeholder={
+    isCompleted
+      ? "Debate finished"
+      : "Enter your argument..."
+  }
+  onKeyDown={(e) => {
+    if (e.key === "Enter") sendMessage();
+  }}
+/>
 
             <button
               onClick={sendMessage}
-              disabled={sending}
-              className="flex items-center justify-center gap-2 bg-black text-white px-5 py-3 rounded-xl hover:scale-105 transition"
+              // disabled={sending}
+                disabled={sending || isCompleted}
+              className={`flex items-center justify-center gap-2 bg-black text-white px-5 py-3 rounded-xl hover:scale-105 transition ${
+                isCompleted ? "opacity-50 cursor-not-allowed" : ""
+              }`}
             >
               {sending ? (
                 <Loader2 className="animate-spin" size={18} />

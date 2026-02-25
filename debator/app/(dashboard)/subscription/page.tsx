@@ -12,14 +12,14 @@ export default function SubscriptionPage() {
 
   const plans = [
     {
-      name: "Free",
+      name: "free",
       price: "₹0",
       description: "Basic access",
       features: ["40 messages/day", "Basic AI responses", "With Ads"],
       popular: false,
     },
     {
-      name: "Pro",
+      name: "pro",
       price: "₹199/mo",
       description: "More debating",
       features: [
@@ -30,7 +30,7 @@ export default function SubscriptionPage() {
       popular: true,
     },
     {
-      name: "Premium",
+      name: "premium",
       price: "₹599/mo",
       description: "Coaching features",
       features: [

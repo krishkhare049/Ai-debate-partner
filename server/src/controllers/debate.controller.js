@@ -73,12 +73,14 @@ const sendMessage = async (req, res) => {
     const { debateId, content } = req.body;
 
     if (!debateId || !content) {
+      console.log("Missing debateId or content:", { debateId, content });
       return res.status(400).json({
         message: "debateId and content required",
       });
     }
 
     if (!isValidId(debateId)) {
+      cosnole.log("Invalid debateId format:", debateId);
       return res.status(400).json({
         message: "Invalid debate ID",
       });
@@ -90,12 +92,14 @@ const sendMessage = async (req, res) => {
     });
 
     if (!debate) {
+      conmsole.log("Debate not found for ID:", debateId);
       return res.status(404).json({
         message: "Debate not found",
       });
     }
 
     if (debate.status === "completed") {
+      console.log("Attempt to send message to completed debate ID:", debateId);
       return res.status(400).json({
         message: "Debate already completed",
       });

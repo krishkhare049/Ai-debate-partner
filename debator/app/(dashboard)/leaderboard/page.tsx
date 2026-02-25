@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { api } from "@/lib/api";
 import toast from "react-hot-toast";
 import { Trophy } from "lucide-react";
+import Image from "next/image";
 
 export default function LeaderboardPage() {
   const [users, setUsers] = useState<any[]>([]);
@@ -74,7 +75,22 @@ export default function LeaderboardPage() {
               {index === 0 ? "🥇" : index === 1 ? "🥈" : "🥉"}
             </div>
 
-            <div className="w-14 h-14 mx-auto rounded-full bg-gray-400 mb-3" />
+            {/* <div className="w-14 h-14 mx-auto rounded-full bg-gray-400 mb-3" /> */}
+             <div className="w-10 h-10 mx-auto rounded-full overflow-hidden bg-gray-300 flex items-center justify-center">
+                {user?.avatar ? (
+                  <Image
+                    src={user.avatar}
+                    alt="User"
+                    width={40}
+                    height={40}
+                    className="object-cover w-full h-full"
+                  />
+                ) : (
+                  <span className="text-sm font-semibold">
+                    {user?.name?.charAt(0)}
+                  </span>
+                )}
+              </div>
 
             <h3 className="font-semibold">
               {user.name}
@@ -104,7 +120,22 @@ export default function LeaderboardPage() {
                 #{index + 4}
               </div>
 
-              <div className="w-10 h-10 rounded-full bg-gray-300" />
+              {/* <div className="w-10 h-10 rounded-full bg-gray-300" /> */}
+                <div className="w-10 h-10 rounded-full overflow-hidden bg-gray-300 flex items-center justify-center mx-auto">
+                {user?.avatar ? (
+                  <Image
+                    src={user.avatar}
+                    alt="User"
+                    width={40}
+                    height={40}
+                    className="object-cover w-full h-full"
+                  />
+                ) : (
+                  <span className="text-sm font-semibold">
+                    {user?.name?.charAt(0)}
+                  </span>
+                )}
+              </div>
 
               <div>
                 <p className="font-semibold">
