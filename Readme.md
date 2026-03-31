@@ -1,87 +1,153 @@
-# 🧠🔥 AI Debate Partner
+# 🧠🔥 AI Debate Partner - Debator
 
-# Developer - Krish Khare
-# Github - <a href="https://github.com/krishkhare049" target="_blank">Github profile</a>
-# LinkedIn - <a href="https://www.linkedin.com/in/krishkhare/" target="_blank">LinkedIn profile</a>
+## 👨‍💻 Developer
 
-AI Debate Partner is an intelligent web application that allows users to engage in real-time debates with an AI opponent. The platform simulates structured argumentative conversations, evaluates performance, and provides feedback on logic, persuasion, and clarity — helping users improve critical thinking and communication skills.
+**Krish Khare**  
+🔗 [GitHub](https://github.com/krishkhare049)  
+🔗 [LinkedIn](https://www.linkedin.com/in/krishkhare/)
 
 ---
 
-## 🚀 Features
+## 🚀 Overview
 
-* 🤖 **AI-Powered Debates** — Debate against an intelligent AI with customizable stances and personalities.
-* 💬 **Real-Time Chat Experience** — Smooth messaging interface with typing effects and markdown support.
-* 🏆 **Automated Scoring System** — AI analyzes debates and determines the winner based on:
+**AI Debate Partner** is an intelligent web application that allows users to engage in real-time debates with an AI opponent.
 
-  * Logic
-  * Persuasion
-  * Clarity
-  * Overall reasoning
-* 📊 **Detailed Result Page** — Get insights and analysis after each debate session.
-* 🔐 **Authentication & User Accounts** — Secure login and personalized debate history.
-* 📚 **Debate History** — Access past debates and review performance over time.
-* 💳 **Subscription-Ready Architecture** — Middleware support for premium plans and feature limits.
-* ⚡ **Modern UX** — Cursor typing animation, loading states, and responsive design.
+It simulates structured argumentative conversations and provides feedback on:
+
+- Logic  
+- Persuasion  
+- Clarity  
+- Overall reasoning  
+
+---
+
+## 💬 Live Debate Experience
+
+<p align="center">
+  <img src="screenshots/debate2.png" alt="Debate Chat UI" width="800"/>
+</p>
+
+Engage in dynamic, real-time debates with an AI opponent that adapts to your arguments and responds intelligently using contextual understanding.
+
+---
+
+## ✨ Features
+
+- 🤖 **AI-Powered Debates**  
+- 💬 **Real-Time Chat Experience**  
+- 🏆 **Automated Scoring System**  
+- 📊 **Detailed Result Page**  
+- 🔐 **Authentication System**  
+- 📚 **Debate History**  
+- 💳 **Subscription-Ready Architecture**  
+- ⚡ **Modern UX**
+
+---
+
+## 📊 Results & Performance Analysis
+
+<p align="center">
+  <img src="screenshots/debate3.png" alt="Debate Results" width="800"/>
+</p>
+
+After each debate, get a detailed breakdown of your performance:
+
+- Logical strength  
+- Persuasiveness  
+- Clarity of arguments  
+- Overall evaluation  
+
+---
+
+## 🏠 Clean & Modern UI
+
+<p align="center">
+  <img src="screenshots/debate1.png" alt="Homepage UI" width="800"/>
+</p>
+
+A smooth and responsive interface designed for focus, engagement, and usability.
 
 ---
 
 ## 🛠️ Tech Stack
 
 ### Frontend
-
-* Next.js (App Router)
-* React
-* Tailwind CSS
-* React Markdown
-* Lucide Icons
+- Next.js (App Router)
+- React
+- Tailwind CSS
+- React Markdown
+- Lucide Icons
 
 ### Backend
-
-* Node.js
-* Express.js
-* MongoDB + Mongoose
-* JWT Authentication
+- Node.js
+- Express.js
+- MongoDB + Mongoose
+- JWT Authentication
 
 ### AI Integration
-
-* Google Gemini (gemini-2.5-flash)
-* Custom prompt engineering for debate personalities and scoring
+- Google Gemini (`gemini-2.5-flash`)
+- Custom prompt engineering  
 
 ---
 
 ## 🧩 Core Functionality
 
-1. User starts a debate session with a topic and AI stance.
-2. Messages are exchanged between user and AI in real time.
-3. AI generates responses using contextual conversation history.
-4. When the debate ends, the system evaluates performance and shows results.
-5. Users can optionally publish debates publicly.
+1. Start debate with topic + AI stance  
+2. Real-time conversation  
+3. Context-aware AI responses  
+4. AI evaluates performance  
+5. View results and insights  
+6. Optional: publish debates  
 
 ---
 
-## 📂 Project Structure (Simplified)
+## 📂 Project Structure
+client/ → Next.js frontend
+server/ → Express backend
+models/ → MongoDB schemas
+controllers/ → Route logic
+services/ → AI integration
+middlewares/ → Auth & subscription logic
 
-```
-client/        → Next.js frontend
-server/        → Express backend
-models/        → MongoDB schemas
-controllers/   → Route logic
-services/      → AI integration layer
-middlewares/   → Auth & subscription checks
-```
 
 ---
 
 ## ⚙️ Environment Variables
 
-Create a `.env` file in the server directory:
+Create a `.env` file inside `/server`:
 
-```
+
 GEMINI_API_KEY=your_api_key
 MONGO_URI=your_database_url
 JWT_SECRET=your_secret
-```
+RAZORPAY_KEY_ID=your_key
+RAZORPAY_KEY_SECRET=your_secret
+
+
+---
+
+## 💳 Razorpay Integration
+
+### Setup Steps
+
+1. Add your website in Razorpay dashboard  
+2. Complete account verification  
+3. Enable subscriptions (AutoPay supported)  
+4. Add API keys to `.env`  
+
+### Benefits
+
+- Free trial → paid conversion  
+- Subscription-based access  
+- Monetization-ready architecture  
+
+---
+
+## 💡 Growth Features
+
+- 🎁 Referral system for organic traffic  
+- 🏷️ Coupons & discounts  
+- 📢 Shareable debate results  
 
 ---
 
@@ -89,62 +155,22 @@ JWT_SECRET=your_secret
 
 ### Install dependencies
 
-```
 npm install
-```
+
 
 ### Run backend
 
-```
 npm run dev
-```
+
 
 ### Run frontend
 
-```
 npm run dev
-```
-
----
-
-## 🎯 Use Cases
-
-* Students practicing debate skills
-* Interview preparation
-* Public speaking improvement
-* Critical thinking training
-* Educational tools and classrooms
-
----
-
-## 💡 Future Improvements
-
-* Voice debates (speech-to-speech AI)
-* Multiplayer debates
-* Leaderboards & rankings
-* Advanced analytics dashboard
-* Multi-AI provider fallback system
-
----
-
-## 📜 License
-
-This project is licensed under the MIT License.
-
----
-
-## 👨‍💻 Author
-
-**Krish Khare**
-Full Stack Developer | AI Enthusiast
-
----
-
-If you find this project useful, consider giving it a ⭐ on GitHub!
 
 
-Add website to razorpay and verify it and then add api keys to server .env
+## ⭐ Support
 
-Use free trial for autopay earning
-Referral system for organic traffic, and coupon
-Result sharing
+If you found this useful:
+
+👉 Star the repo  
+👉 Share it with others 

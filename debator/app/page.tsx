@@ -41,7 +41,7 @@ export default function Home() {
           <h1 className="text-5xl md:text-6xl font-bold tracking-tight leading-tight">
             Train Your Mind With Your
             <span className="block text-black">
-              AI Debate Partner
+              Debator - AI Debate Partner
             </span>
           </h1>
 
